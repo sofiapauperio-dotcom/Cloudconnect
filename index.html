@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CloudConnect – Clientes</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>CloudConnect <span class="badge">Airtable CRUD</span></h1>
+    <div class="actions">
+      <input id="searchInput" type="search" placeholder="Buscar por nome..." />
+      <button id="searchBtn" aria-label="Buscar">Buscar</button>
+      <button id="resetBtn" aria-label="Limpar busca">Limpar</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Novo cliente</h2>
+      <form id="createForm" novalidate>
+        <div class="grid">
+          <label>
+            Nome* 
+            <input type="text" id="nome" required placeholder="Ex.: Maria Souza" />
+            <small class="hint">Obrigatório</small>
+          </label>
+          <label>
+            Email* 
+            <input type="email" id="email" required placeholder="Ex.: maria@email.com" />
+            <small class="hint">Obrigatório</small>
+          </label>
+          <label>
+            Telefone
+            <input type="tel" id="telefone" placeholder="Ex.: (11) 99999-0000" />
+          </label>
+        </div>
+        <button class="primary" type="submit">Adicionar</button>
+        <span id="createStatus" class="status"></span>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="table-header">
+        <h2>Lista de clientes</h2>
+        <div id="listState" class="state"></div>
+      </div>
+      <div id="loading" class="loading" hidden>Carregando…</div>
+      <div id="error" class="error" hidden></div>
+      <div id="empty" class="empty" hidden>Nenhum registro encontrado.</div>
+
+      <table id="clientsTable" class="table" aria-live="polite">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th style="width:160px;">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+
+      <div class="pagination">
+        <button id="prevBtn" disabled>◀︎ Anterior</button>
+        <span id="pageInfo">Página 1</span>
+        <button id="nextBtn" disabled>Próxima ▶︎</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Missão 5 – CloudConnect • Explorador de Nuvens 🪐</p>
+  </footer>
+
+  <script src="./main.js" defer></script>
+</body>
+</html>
